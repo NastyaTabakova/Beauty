@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+    <script src="/js/site.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Categories">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="InsertCategory">Категории</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="InsertSubcategory">Подкатегории</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="Admin" asp-action="SelectUsers">Пользователи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+
+    <div style="margin-left: 37%; margin-top: 1%; margin-bottom:20px;">
+
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="SelectClients">Только клиенты</a>
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="SelectMasters">Только мастера</a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Email</th>
+                <th scope="col">Номер телефона</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">@user.Id</th>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+
+</body>
+</html>

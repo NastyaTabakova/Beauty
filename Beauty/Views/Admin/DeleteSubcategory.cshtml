@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .body {
+            background: url(~/img//back.jpeg);
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="~/lib/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Categories">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="InsertCategory">Категории</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="Admin" asp-action="InsertSubcategory">Подкатегории</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="SelectUsers">Пользователи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+
+    <h2 class="text-center">
+        Удалить существующую подкатегорию
+    </h2>
+    <h4 class="text-center">
+        Выберите подкатегорию из списка для удаления
+    </h4>
+    <h4 class="text-center">
+        Вы не сможете удалить подкатегорию если в ней содержатся услуги мастеров
+    </h4>
+
+    <form class="text-center">
+        <div class="col-md-5 mb-3" style=" margin-left: 30%;">
+            <label style="margin-top:20px; margin-bottom:5px;">Выберите услугу</label>
+            <select class="form-control rounded-pill" name="subId" id="subId" required="">
+                <option>Выберите</option>
+                @foreach (var subcategory in Model)
+                {
+                    <option value="@subcategory.Id">@subcategory.Subcategoryname</option>
+                }
+            </select>
+        </div>
+        <button class="btn btn-secondary rounded-pill" type="button" onclick="DeleteSubcategory()">Удалить</button>
+    </form>
+    <div style="margin-left: 46%; margin-top: 85px">
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="InsertSubcategory">< Вернуться</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+﻿<html lang="en">
+<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        .st {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+
+        .my-bg {
+            background-color: #F1CFCD !important;
+        }
+
+        .btn-primary {
+            background-color: #DB7093 !important;
+            border-color: #FF69B4 !important;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <script src="~/lib/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+    <script src="/js/site.js"></script>
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="CreateNewService">Добавить услугу</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addShedul">Добавить расписание</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addPhoto">Добавить фото</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="ServiceList">Мои услуги</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectHistory">Записи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectMasterInfo">Профиль</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+    <div style="margin-bottom: 30px; margin-left: 23px">
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="Book">Забронированные</a>
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="NoBook">Отмененные</a>
+        <a class="btn btn-secondary rounded-pill" asp-controller="MasterPages" asp-action="Complete">Выполненные</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="result" sstyle="margin: 30px">
+
+        @foreach (var history in Model)
+        {
+            <div class="col">
+                <div class="card border-light rounded-3 my-bg">
+                    <div class="card-header my-bg text-black">
+                        <p class="card-text">@history.FirstName @history.LastName</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Телефон: @history.PhoneNumber</p>
+                        <p class="card-text">Услуга: @history.SubcategoryName</p>
+                        <p class="card-text">Дата: @history.Date</p>
+                        <p class="card-text">Время: @history.Time</p>
+                        <p class="card-text">Цена: @history.Price рублей</p>
+                        <p class="card-text">Статус: @history.Status</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

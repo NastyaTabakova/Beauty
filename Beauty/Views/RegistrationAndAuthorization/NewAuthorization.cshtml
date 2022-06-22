@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Вход</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="~/lib/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+    <script src="/js/site.js"></script>
+
+
+
+    <link rel="icon" type="image/png" href="~/style/images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="~/style/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/style/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/style/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/style/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/style/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/style/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/style/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/style/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/style/css/main.css">
+</head>
+<body style="background-color: #ECDFD7;">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" asp-controller="RegistrationAndAuthorization" asp-action="Authorization">
+                    <span class="login100-form-title p-b-43">
+                        Войдите пожалуйста
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Введите почту в формате: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" id="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Введите пароль">
+                        <input class="input100" type="password" name="password" id="password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" onclick="Auth()">
+                            Войти
+                        </button>
+                    </div>
+
+                    <div class="container-login100-form-btn" style="margin-top:30px; border-radius: 40px!important;">
+                        <a class="login100-form-btn" asp-controller="RegistrationAndAuthorization" asp-action="Registration">
+                            Регистрация
+                        </a>
+                    </div>
+                </form>
+                <div class="login100-more" style="background-color: #ECDFD7;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/style/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="~/style/vendor/animsition/js/animsition.min.js"></script>
+<script src="~/style/vendor/bootstrap/js/popper.js"></script>
+<script src="~/style/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/style/vendor/select2/select2.min.js"></script>
+<script src="~/style/vendor/daterangepicker/moment.min.js"></script>
+<script src="~/style/vendor/countdowntime/countdowntime.js"></script>
+<script src="~/style/js/main.js"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <meta property="og:image" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
+    <meta property="og:image:secure_url" content="//image.prntscr.com/image/93970e70e1f045e1aff76e05469008d8.png" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="300" />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
+    <link rel="stylesheet" href="/css/styleSub.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+        .d-flex {
+            display: flex !important;
+        }
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        div {
+            display: block;
+        }
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="UserPages" asp-action="selectHistory">Записи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="UserPages" asp-action="selectUserInfo">Профиль</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="UserPages" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+
+    <div class="shell">
+        <div class="container">
+            <div class="row">
+                @foreach (var subcategory in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="wsk-cp-product">
+                            <div class="wsk-cp-img">
+                                <img class="img-responsive" src="data:image/jpeg;base64,@(Convert.ToBase64String(subcategory.Image))" role="img" />
+                            </div>
+                            <div class="wsk-cp-text">
+                                <form asp-controller="UserPages" asp-action="selectSub" method="get" class="category">
+                                    <button type="submit">Посмотреть</button>
+                                    <input style="visibility: hidden; width:0px; height:0px;" name="id" id="id" value="@subcategory.Id" />
+                                </form>
+                                <div class="title-product">
+                                    <h3>@subcategory.Subcategoryname</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

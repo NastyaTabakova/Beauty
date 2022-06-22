@@ -1,0 +1,78 @@
+﻿<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        div {
+            display: block;
+        }
+
+        .st {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+
+        body {
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-secondary rounded-pill" asp-controller="RandomUser" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="RegistrationAndAuthorization" asp-action="NewAuthorization">Войти</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="RegistrationAndAuthorization" asp-action="Registration">Регистрация</a>
+        </nav>
+    </div>
+    <form asp-controller="RandomUser" asp-action="selectMasterPortfolio" enctype="multipart/form-data">
+        @foreach (var portfolio in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm" style="width: 18rem;">
+                    <div class="card-header">
+                        @portfolio.FirstName @portfolio.LastName
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Страна: @portfolio.Country</li>
+                        <li class="list-group-item">@portfolio.City</li>
+                        <li class="list-group-item">Адрес:@portfolio.Street, @portfolio.House</li>
+                        <li class="list-group-item">Опыт работы: @portfolio.WorkExperience</li>
+                        <li class="list-group-item">Где проводится услуга: @portfolio.ServiceLocation</li>
+                    </ul>
+                </div>
+                <div class="card shadow-sm" style="width: 18rem;">
+                    @foreach (var image in portfolio.Images)
+                     {
+                        <img @*width="300" height="400"*@ class="card-img-top" src="data:image/jpeg;base64,@(Convert.ToBase64String(image))" role="img" />
+                     }
+                </div>
+            </div>
+            
+         }
+
+</form>
+
+</body>
+
+
+

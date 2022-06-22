@@ -1,0 +1,57 @@
+body{
+	background: #ECDFD7!important;
+}
+
+.first{
+position: absolute;
+width: 492px;
+height: 106px;
+left: 128px;
+top: 176px;
+font-family: 'Roboto Slab';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 110%;
+color: #AF654A;
+}
+
+.second{
+position: absolute;
+width: 490px;
+height: 64px;
+left: 128px;
+top: 290px;
+font-family: 'Roboto Slab';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 32px;
+color: #92633D;
+}
+
+img{
+position: absolute;
+width: 560px;
+height: 631px;
+left: 806px;
+top: 0px;
+}
+
+.cont {
+	position: absolute;
+	width: 284px;
+	height: 60px;
+	left: 128px;
+	top: 392px;
+
+
+}
+
+a {
+	left: 192px;
+	top: 406px;
+
+
+}
+

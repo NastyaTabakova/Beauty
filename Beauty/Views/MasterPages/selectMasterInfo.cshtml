@@ -1,0 +1,93 @@
+﻿
+<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        img {
+            border-radius: 90px;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
+    <script src="~/lib/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body class="text-center">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="CreateNewService">Добавить услугу</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addShedul">Добавить расписание</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addPhoto">Добавить фото</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="ServiceList">Мои услуги</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectHistory">Записи</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectMasterInfo">Профиль</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="result">
+        @foreach (var info in Model)
+        {
+            <main class="form-signin">
+                <img class="mb-4" src="~/img/user.jpg" alt="" width="170" height="170">
+                <h2>Изменить личную информацию:</h2>
+                <form id="infoForUpdate">
+
+                    <input id="email" type="email" class="form-control mb-3 rounded-pill" placeholder="example@mail.com" required="" autofocus="" name="email" value="@info.Email">
+                    <input id="firstname" type="text" class="form-control mb-3 rounded-pill" placeholder="Имя" required="" name="firstname" value="@info.FirstName">
+                    <input id="lastname" type="text" class="form-control mb-3 rounded-pill" placeholder="Фамилия" required="" name="lastname" value="@info.LastName">
+                    <input id="phonenumber" type="text" class="form-control mb-3 rounded-pill" placeholder="Номер телефона" required="" name="phonenumber" value="@info.PhoneNumber">
+                    <button class="w-100 btn btn-lg btn-secondary mb-3 rounded-pill" type="button" onclick="updateMasterInfo()">Изменить</button>
+
+                </form>
+                <br />
+                <h2>Изменить пароль:</h2>
+
+
+                <form id="passForUpdate">
+                    <input type="password" id="inputPassword" class="form-control mb-3 rounded-pill" placeholder="Старый пароль" required="" name="oldpassword">
+                    <input type="password" id="inputPassword" class="form-control mb-3 rounded-pill" placeholder="Новый пароль" required="" name="newpassword">
+                    <button class="w-100 btn btn-lg btn-secondary mb-3 rounded-pill" type="button" onclick="updateMasterPassword()">Изменить</button>
+
+                </form>
+
+            </main>
+        }
+    </div>
+</body>

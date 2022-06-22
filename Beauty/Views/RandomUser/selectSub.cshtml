@@ -1,0 +1,77 @@
+﻿<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        .my-bg {
+            background-color: #F1CFCD !important;
+        }
+
+        .btn-primary {
+            background-color: #DB7093 !important;
+            border-color: #FF69B4 !important;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-secondary rounded-pill" asp-controller="RandomUser" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="RegistrationAndAuthorization" asp-action="NewAuthorization">Войти</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="RegistrationAndAuthorization" asp-action="Registration">Регистрация</a>
+        </nav>
+    </div>
+    <form>
+         <div class="row row-cols-1 row-cols-md-4 g-4 card-deck" id="result">
+
+              @foreach (var info in Model)
+               {
+                    <div class="col">
+                        <div class="card border-light rounded-3 my-bg ">
+                            <div class="card-header my-bg text-black">
+                                @info.FirstName  @info.LastName
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">Цена услуги: @info.Price</h3>
+                                <p class="card-text">Город: @info.City</p>
+                                <p class="card-text">Адрес: @info.Street @info.House</p>
+                                <p class="card-text">Чтобы записаться, войдите</p>
+                                <button type="submit" class="btn btn-primary rounded-pill" asp-controller="RandomUser" asp-action="selectMasterPortfolio" value="@info.Id" id="idmas" name="idmas">Подробнее</button>
+                            </div>
+                        </div>
+
+                    </div>
+               }
+
+         </div>
+</form>
+</body>

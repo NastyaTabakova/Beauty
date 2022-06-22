@@ -1,0 +1,77 @@
+﻿<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+    <script src="/js/site.js"></script>
+    <script src="~/lib/sweetalert.min.js"></script>
+
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="CreateNewService">Добавить услугу</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="MasterPages" asp-action="addShedul">Добавить расписание</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addPhoto">Добавить фото</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="ServiceList">Мои услуги</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectHistory">Записи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectMasterInfo">Профиль</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+
+    <h2 class="text-center">
+        Добавить расписание
+    </h2>
+    <h4 class="text-center">
+        Выберите дату и время для выполнения услуги
+    </h4>
+
+    <form id="shedInfo" class="form-signin" asp-controller="MasterPages" asp-action="addShedul" style=" margin-left: 25%; margin-right: 25%;">
+        <input type="date" class="form-control mb-3 rounded-pill" placeholder="Выберите дату" required="" name="date">
+        <input type="time" class="form-control mb-3 rounded-pill" placeholder="Время работы" required="" name="timestart">
+        <button type="button" onclick="addShedul()" class="btn btn-secondary rounded-pill" style="margin-left: 86%;">Добавить</button>
+    </form>
+
+    @*<form class="form-signin" asp-controller="MasterPages" asp-action="addShedul" method="get">
+            <p>Ваше расписание:</p>
+            <ul>
+                @foreach (var sheduler in Model)
+                {
+                    <li>@sheduler.Date  @sheduler.Time</li>
+                }
+            </ul>
+            <button type="submit" class="btn btn-secondary rounded-pill">Обновить</button>
+        </form>*@
+</body>

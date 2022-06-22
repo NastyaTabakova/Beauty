@@ -1,0 +1,112 @@
+﻿<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+
+        .st {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+
+        .my-bg {
+            background-color: #F1CFCD !important;
+        }
+
+        .btn-primary {
+            background-color: #DB7093 !important;
+            border-color: #FF69B4 !important;
+        }
+
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-secondary rounded-pill" asp-controller="MasterPages" asp-action="HomePage">Главная</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="CreateNewService">Добавить услугу</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addShedul">Добавить расписание</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="addPhoto">Добавить фото</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="ServiceList">Мои услуги</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectHistory">Записи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="selectMasterInfo">Профиль</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="MasterPages" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+    <form asp-controller="RandomUser" asp-action="selectMasterPortfolio" enctype="multipart/form-data" style="margin: 30px">
+        @foreach (var portfolio in Model)
+        {
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Адрес</th>
+                        <th scope="col">Опыт работы</th>
+                        <th scope="col">Где проводится</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@portfolio.FirstName</td>
+                            <td>@portfolio.LastName</td>
+                            <td>@portfolio.Country, @portfolio.City, @portfolio.Street, @portfolio.House </td>
+                            <td>@portfolio.WorkExperience</td>
+                            <td>@portfolio.ServiceLocation</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div class="shadow-sm row" style="width: 35rem;">
+
+                @foreach (var image in portfolio.Images)
+                {
+                    <div class="col">
+
+                        <img class="card-img-top" src="data:image/jpeg;base64,@(Convert.ToBase64String(image))" role="img" />
+                        
+                    </div>
+                }
+            </div>
+
+        }
+
+    </form>
+
+</body>
+
+
+
+

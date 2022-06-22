@@ -1,0 +1,76 @@
+﻿<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        div {
+            display: block;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">BeautyBaza</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" asp-controller="UserPages" asp-action="selectUserInfo">Профиль</a>
+            <a class="p-2 text-dark" asp-controller="UserPages" asp-action="UserHomePage">Главная</a>
+        </nav>
+        <a class="btn btn-outline-primary" asp-controller="UserPages" asp-action="Signout">Выйти</a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="result">
+        <form asp-controller="UserPages" asp-action="CheckService" method="post">
+            @foreach (var info in Model)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text">@info.FirstName @info.LastName</p>
+                            <p class="card-text">Где проводится услуга: @info.ServiceLocation</p>
+                            <p class="card-text">Цена: @info.Price рублей</p>
+                            @*<input style="visibility: hidden; width:0px; height:0px;" name="idmaster" id="idmaster" value="@info.Id" />*@
+                            <input style="visibility: hidden; width:0px; height:0px;" name="subid" id="subid" value="@info.SubId" />
+                            <input style="visibility: hidden; width:0px; height:0px;" name="price" id="price" value="@info.Price" />
+                            <select name="date">
+                                <option>выберите</option>
+                                @foreach (var date in info.Dates)
+                                {
+
+                                    <option>@date</option>
+                                }
+                            </select>
+                            <p class="card-text">Предложите удобное время</p>
+                            <input type="text" id="inputTime" class="form-control mb-3" placeholder="10:20" name="inputTime">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary" asp-controller="UserPages" asp-action="CheckService" name="idmaster" id="idmaster" value="@info.Id">Записаться ></button>
+
+                            <button type="submit" class="btn btn-sm btn-outline-secondary" asp-controller="UserPages" asp-action="selectMasterPortfolio" value="@info.Id" id="idmas" name="idmas">Посмотреть информацию ></button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </form>
+    </div>
+    <form asp-controller="UserPages" asp-action="sortByPrice">
+        <button type="submit" class="btn btn-sm btn-outline-secondary">Сортировать по цене ></button>
+    </form>
+</body>

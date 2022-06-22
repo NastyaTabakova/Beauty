@@ -1,0 +1,66 @@
+﻿<html lang="en">
+<head>
+    <style>
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+        .mr-md-auto, .mx-md-auto {
+            margin-right: auto !important;
+        }
+        .d-flex {
+            display: flex !important;
+        }
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        div {
+            display: block;
+        }
+        body {
+            font-family: 'Muli', sans-serif;
+            background: #ECDFD7 !important;
+        }
+    </style>
+    <script src="/js/site.js"></script>
+    <script src="~/lib/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" type="text/css" />
+
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3  border-bottom box-shadow">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Beauty</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Categories">Главная</a>
+            <a class="btn btn-secondary rounded-pill" asp-controller="Admin" asp-action="InsertCategory">Категории</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="InsertSubcategory">Подкатегории</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="SelectUsers">Пользователи</a>
+            <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="Signout">Выйти</a>
+        </nav>
+    </div>
+
+    <h2 class="text-center">
+        Добавить новую категорию
+    </h2>
+    <h4 class="text-center">
+        Введите название новой категории и загрузите изображение
+    </h4>
+
+    <form id="newCategory" enctype="multipart/form-data" style=" margin-left: 25%; margin-right: 25%; margin-top:20px; margin-bottom: 3%">
+        <input id="categoryName" type="text" class="form-control mb-3 rounded-pill" placeholder="Название категории" required="" name="categoryName">
+        <input type="file" name="Photo" accept="image/jpg" style=" margin-top: 10px;" />
+        <button type="button" onclick="insertCategory()" class="btn btn-secondary rounded-pill" style=" margin-top: 20px; margin-left: 84%;">Добавить</button>
+    </form>
+
+    <h5 class="text-center">Вы можете удалить или изменить уже существующую категорию услуг</h5>
+    <div style="margin-left: 37%; margin-top: 3%">
+
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="DeleteCategory">Удалить категорию</a>
+        <a class="btn btn-outline-secondary rounded-pill" asp-controller="Admin" asp-action="UpdateCategory">Обновить категорию</a>
+    </div>
+</body>
+</html>
